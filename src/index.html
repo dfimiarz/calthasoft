@@ -1,29 +1,40 @@
-<template>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vuetify Parallax Starter</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="https://cdn.vuetifyjs.com/images/logos/favicon.ico">
+</head>
+<body>
+<div id="app">
   <v-app>
     <v-app-bar
       app
-      color="primary"
-      dark
+      color="white"
       height="100"
     >
       <v-avatar
         class="mr-3"
-        
+        color="grey lighten-5"
         size="70"
       >
         <v-img
           contain
           max-height="70%"
-          :src="require('./assets/Logo.png')"
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
         ></v-img>
       </v-avatar>
 
       <v-toolbar-title class="font-weight-black headline">
-        CALTHASOFT L.L.C.
+        VUETIFY
       </v-toolbar-title>
     </v-app-bar>
 
-    <v-main>
+    <v-content>
       <section id="hero">
         <v-row no-gutters>
           <v-img
@@ -55,7 +66,7 @@
                       :class="[$vuetify.breakpoint.smAndDown ? 'display-3': 'display-4']"
                       class="font-weight-black"
                     >
-                      CALTHASOFT
+                      VUETIFY
                     </span>
 
                   </v-col>
@@ -74,11 +85,12 @@
           </v-img>
         </v-row>
       </section>
+
       <section id="about-me">
         <div class="py-12"></div>
 
         <v-container class="text-center">
-          <h2 class="display-2 font-weight-bold mb-3">About Us</h2>
+          <h2 class="display-2 font-weight-bold mb-3">ABOUT ME</h2>
 
           <v-responsive
             class="mx-auto mb-8"
@@ -93,26 +105,26 @@
             class="mx-auto title font-weight-light mb-8"
             max-width="720"
           >
-            At Calthasoft we strive to create software solutions that stand out from the crowd. We follow agile development practices with fast iteration cycles and goal-oriented development process. We specialize in web-based architectures based on proven industry practices to deliver simple and beautiful software that does the right thing. No more, no less.
+            Vuetify is the #1 component library for Vue.js and has been in active development since 2016. The goal of the project is to provide users with everything that is needed to build rich and engaging web applications using the Material Design specification. It accomplishes that with a consistent update cycle, Long-term Support (LTS) for previous versions, responsive community engagement, a vast ecosystem of resources and a dedication to quality components.
           </v-responsive>
 
           <v-avatar
             class="elevation-12 mb-12"
             size="128"
           >
-            <v-img :src="require('./assets/dfimiarz.jpg')"></v-img>
+            <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
           </v-avatar>
 
           <div></div>
 
           <v-btn
             color="grey"
-            @click="$vuetify.goTo('#projects')"
+            href="https://vuetifyjs.com"
             outlined
             large
           >
             <span class="grey--text text--darken-1 font-weight-bold">
-              Recent Projects
+              Vuetify Documentation
             </span>
           </v-btn>
         </v-container>
@@ -127,7 +139,7 @@
         <div class="py-12"></div>
 
         <v-container class="text-center">
-          <h2 class="display-2 font-weight-bold mb-3">How We Work</h2>
+          <h2 class="display-2 font-weight-bold mb-3">VUETIFY FEATURES</h2>
 
           <v-responsive
             class="mx-auto mb-12"
@@ -193,7 +205,7 @@
                 v-for="[value, title] of stats"
                 :key="title"
                 cols="12"
-                md="4"
+                md="3"
               >
                 <div class="text-center">
                   <div
@@ -212,11 +224,11 @@
         </v-parallax>
       </section>
 
-      <section id="projects">
+      <section id="blog">
         <div class="py-12"></div>
 
         <v-container>
-          <h2 class="display-2 font-weight-bold mb-3 text-center">Recent Projects</h2>
+          <h2 class="display-2 font-weight-bold mb-3 text-uppercase text-center">Blog</h2>
 
           <v-responsive
             class="mx-auto mb-12"
@@ -229,17 +241,16 @@
 
           <v-row>
             <v-col
-              v-for="({ src, text, title,page }, i) in projects"
+              v-for="({ src, text, title }, i) in articles"
               :key="i"
               cols="12"
               md="4"
             >
               <v-img
-                :src="require('./assets/' + src)"
+                :src="src"
                 class="mb-4"
                 height="275"
                 max-width="100%"
-                contain
               ></v-img>
 
               <h3
@@ -255,9 +266,8 @@
               <v-btn
                 class="ml-n4 font-weight-black"
                 text
-                :disabled="! page"
               >
-                Project Page
+                Continue Reading
               </v-btn>
             </v-col>
           </v-row>
@@ -276,7 +286,7 @@
         <div class="py-12"></div>
 
         <v-container>
-          <h2 class="display-2 font-weight-bold mb-3 text-center">Contact Us</h2>
+          <h2 class="display-2 font-weight-bold mb-3 text-uppercase text-center">Contact Me</h2>
 
           <v-responsive
             class="mx-auto mb-12"
@@ -288,7 +298,7 @@
           </v-responsive>
 
           <v-theme-provider light>
-            <v-row justify="center">
+            <v-row>
               <v-col cols="12">
                 <v-text-field
                   flat
@@ -328,7 +338,6 @@
                 <v-btn
                   color="accent"
                   x-large
-                  disabled
                 >
                   Submit
                 </v-btn>
@@ -336,74 +345,73 @@
             </v-row>
           </v-theme-provider>
         </v-container>
-         <div class="py-12"></div>
+
+        <div class="py-12"></div>
       </v-sheet>
-    </v-main>
+    </v-content>
+
     <v-footer
       class="justify-center"
       color="#292929"
       height="100"
     >
       <div class="title font-weight-light grey--text text--lighten-1 text-center">
-        &copy; {{ (new Date()).getFullYear() }} — Calthasoft, L.L.C.
+        &copy; {{ (new Date()).getFullYear() }} — Vuetify, LLC — Made with 💜 by John Leider
       </div>
     </v-footer>
   </v-app>
-</template>
-
-<script>
-
-
-export default {
-  name: 'App',
-
-  components: {
-    
-  },
-
-  data: () => ({
-        projects: [
+ </div>
+ <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+ <script>
+  new Vue({
+    el: '#app',
+    vuetify: new Vuetify(),
+    data () {
+      return {
+        articles: [
           {
-            src: 'CalthasoftLLC.jpg',
-            title: 'Calthasoft Website',
-            text: 'Our website implemented with Vue.js and Vuetify deployed on Google Firebase. Under construction.',
-            page: null
+            src: 'https://images.unsplash.com/photo-1423784346385-c1d4dac9893a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+            title: 'Mobile first & Responsive',
+            text: 'Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. Sed ornare ligula eget tortor tempor, quis porta tellus dictum.',
           },
           {
-            src: 'Clubhouse.jpg',
-            title: 'Clubhouse',
-            text: 'Open source tennis club managment platform. Built in Vue.js with Express, Redis, MySQL based REST API backend.',
-            page:  null
+            src: 'https://images.unsplash.com/photo-1475938476802-32a7e851dad1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+            title: 'Think outside the box',
+            text: 'Nam ut leo ipsum. Maecenas pretium aliquam feugiat. Aenean vel tempor est, vitae tincidunt risus. Sed sodales vestibulum nibh.',
           },
           {
-            src: 'Birdcolony.jpg',
-            title: 'Birdcolony',
-            text: 'A plaform for managing a bird colony. Tracking colony resources including nest, birds, eggs, and overall colony infrastructure. Deployed on Google Cloud Infrastructure.',
-            page: null
-          }
+            src: 'https://images.unsplash.com/photo-1416339442236-8ceb164046f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1892&q=80',
+            title: 'Small changes, big difference',
+            text: 'Vestibulum in dictum velit, in rhoncus nibh. Maecenas neque libero, interdum a dignissim in, aliquet vitae lectus. Phasellus lorem enim, luctus ut velit eget.',
+          },
         ],
         features: [
           {
-            icon: 'mdi-laptop',
-            title: 'Software Expertise',
-            text: 'We like full-stack software solutions based on modern front-end frameworks like Vue, React. Backend technologies follow REST API practices interfacing with relational and NoSQL databases.',
+            icon: 'mdi-account-group-outline',
+            title: 'Vibrant Community',
+            text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto cupiditate sint possimus quidem atque harum excepturi nemo velit tempora! Enim inventore fuga, qui ipsum eveniet facilis obcaecati corrupti asperiores nam',
           },
           {
-            icon: 'mdi-account-multiple',
-            title: 'People',
-            text: 'We are a small team of developers with multiple years of software development experience. We embrace the everchanging industry and do not shy away from learning. We are curious, we innovate, we "JUST GET IT DONE"',
+            icon: 'mdi-update',
+            title: 'Frequent Updates',
+            text: 'Sed ut elementum justo. Suspendisse non justo enim. Vestibulum cursus mauris dui, a luctus ex blandit. Lorem ipsum dolor sit amet consectetur adipisicing elit. qui ipsum eveniet facilis obcaecati corrupti consectetur adipisicing elit.',
           },
           {
-            icon: 'mdi-face-agent',
-            title: 'Agile Development',
-            text: 'We take pride in our work. We focus on fast development cycles and delivering viable solutions that show results in a short time frames. Such process allows our customers to gauge progress and make stratigic changes quickly without the need for long meetings and headaches of overplanning.',
+            icon: 'mdi-shield-outline',
+            title: 'Long-term Support',
+            text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto cupiditate sint possimus quidem atque harum excepturi nemo velit tempora! Enim inventore fuga, qui ipsum eveniet facilis obcaecati corrupti asperiores nam',
           },
         ],
         stats: [
-          ['10+', 'Years of experience'],
-          ['5', 'Projects in production'],
-          ['1000+', 'Users across projects']
+          ['24k', 'Github Stars'],
+          ['330+', 'Releases'],
+          ['1m', 'Downloads/mo'],
+          ['5m', 'Total Downloads'],
         ],
-      }),
-};
+      }
+    }
+  })
 </script>
+</body>
+</html>
